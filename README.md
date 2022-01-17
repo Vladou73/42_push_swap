@@ -28,3 +28,8 @@ which cannot be duplicated.
 • To do this you have the following operations at your disposal:
 
 
+ATTENTION apparemment il faut gerer comme sous bash. pas besoin de gerer avec le split pour les arguments
+
+Useful ressources 
+- https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
+- https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a

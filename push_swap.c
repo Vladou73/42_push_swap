@@ -6,7 +6,7 @@
 /*   By: vladimir <vladimir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 11:52:03 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/07 15:45:21 by vladimir         ###   ########.fr       */
+/*   Updated: 2022/02/07 17:54:13 by vladimir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	args_have_duplicates(char **args)
 		j = 2;
 		while (args[j] && j != i)
 		{
-			printf("%s, %s\n",args[i], args[j]);
 			if (!ft_strncmp(args[i], args[j], 15))
 				return (1);
 			j++;
@@ -59,7 +58,6 @@ int	args_have_error(int argc, char **args)
 	i = 1;
 	while (args[i])
 	{
-		printf("%s\n",args[i]);
 		if (!array_is_number(args[i]))
 			return (1);
 		i++;
@@ -88,8 +86,6 @@ void check_args(int argc, char **argv)
 		exit(1);
 
 	//• In case of error, you must display Error followed by a ’\n’ on the standard error.
-	//Errors include for example: some arguments aren’t integers, some arguments are not ints (bigger or lower than max int / min int)
-	//and/or there are duplicates.
 	if (args_have_error(argc, argv))
 	{
 		ft_putstr_fd("Error\n", 2);
@@ -105,6 +101,78 @@ int	stack_is_sorted()
 	return (0);
 }
 
+t_stack	*ft_create_elem(int n)
+{
+	t_stack	*elem;
+
+	elem = malloc(sizeof(t_list));
+	// elem = ft_calloc(1, sizeof(t_list));
+	if (!elem)
+		return (NULL);
+	elem->n = n;
+	elem->next = NULL;
+	return (elem);
+}
+
+void	ft_stack_add_front(t_stack **stack, t_stack *new)
+{
+	if (new)
+	{
+		new->next = *stack;
+		printf("stack->n=%d\n",(*stack)->n);
+		printf("new->next->n=%d\n",new->next->n);
+		*stack = new;
+		printf("stack->n=%d\n\n",(*stack)->n);
+	}
+}
+
+int	ft_stack_len(t_stack **stack)
+{
+	int		i;
+	t_stack	*tmp;
+
+	printf("coucou3\n");
+	if (!(*stack))
+		return (0);
+	tmp = *stack;
+	i = 1;
+	while ((*stack)->next)
+	{
+		tmp = tmp->next;
+		i++;
+		printf("n=%d\n", (tmp)->n);
+		printf("i=%d\n", i);
+	}
+	return (i);
+}
+
+void	store_in_stack(int argc, char **args)
+{
+	t_stack	*new;
+	t_stack **stack;
+	int		nbr;
+	printf("store in stack A\n");
+
+	new = ft_create_elem(ft_atoi(args[argc - 1]));
+	stack = &new;
+	argc--;
+	printf("stack->n=%d\n",(*stack)->n);
+	printf("stack->n=%d\n",(*stack)->n);
+	while(argc >= 2)
+	{
+		nbr = ft_atoi(args[argc - 1]);
+		printf("stack->n=%d\n",(*stack)->n);
+		new = ft_create_elem(nbr);
+		printf("stack->n=%d\n",(*stack)->n);
+		ft_stack_add_front(stack, new);
+		argc--;
+	}
+	printf("coucou2\n");
+	printf("%d\n",(*stack)->next->next->n);
+	// printf("%d\n",ft_stack_len(stack));
+
+}
+
 int	main(int argc, char **argv)
 {
 	//0 CAUTION : for all functions used from libft, need to check these functions and make sure they have no pb
@@ -113,10 +181,10 @@ int	main(int argc, char **argv)
 	check_args(argc, argv);
 
 	//2)parsing
-		//1st check if args are of type "1 2 3 4 5" et 1 2 3 4 5 => ie if it needs split => apparemment pas besoin de faire ca. gerer uniquement comme sous bash. si on nous donne ca "1 2 3 4 5" il faut considerer que c'est une erreur
-	//2nd atoi all arguments and store them in stack a.
+		//atoi all arguments, transform them in structures and store them in stack A as a linked list.
 		//The first argument should be at the top of the stack
 		//so storing needs to start by last arg and then pile each arg above the latest
+	store_in_stack(argc, argv);
 
 	//3) check if stack a is already sorted, return 0. could maybe also check that stack b is empty ?
 	// if stack_is_sorted()

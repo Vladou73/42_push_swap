@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vladimir <vladimir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:56:45 by vnafissi          #+#    #+#             */
-/*   Updated: 2021/12/02 18:42:40 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/07 12:11:18 by vladimir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // necessary libraries.
 # include <stdlib.h>
-# include <unistd.h> 
+# include <unistd.h>
 // libraries for testing functions
 # include <stdio.h>
 # include <ctype.h>
@@ -71,5 +71,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+long	ft_atoi_long(const char *src);
+int		ft_isint(long n);
 
 #endif

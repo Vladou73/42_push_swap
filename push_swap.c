@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 11:52:03 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/08 14:49:42 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/08 16:26:27 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,16 +93,25 @@ void check_args(int argc, char **argv)
 	}
 }
 
-int	stack_is_sorted()
+int	stack_is_sorted(t_stack *stack)
 {
-	//if stack a is sorted
-		//return 1
-
-	return (0);
+	t_stack	*tmp1;
+	t_stack	*tmp2;
+	
+	if (!stack || !(stack->next))
+		return (1);
+	tmp1 = stack;
+	while (tmp1->next)
+	{
+		tmp2 = tmp1->next;
+		if (tmp1->n > tmp2->n)
+			return (0);
+		tmp1 = tmp1->next;
+	}
+	return (1);
 }
 
-
-void	store_in_stack(int argc, char **args)
+t_stack	*store_in_stack(int argc, char **args)
 {
 	t_stack	*new;
 	t_stack *stack;
@@ -117,11 +126,13 @@ void	store_in_stack(int argc, char **args)
 		ft_stack_add_front(&stack, new);
 		argc--;
 	}
-	printf("ft_stack_len=%d\n",ft_stack_len(&stack));
+	return (stack);
 }
 
 int	main(int argc, char **argv)
 {
+ 	t_stack	*stack;
+
 	//0 CAUTION : for all functions used from libft, need to check these functions and make sure they have no pb
 
 	//1) check arguments function. if checks are not good, exit program
@@ -131,11 +142,12 @@ int	main(int argc, char **argv)
 		//atoi all arguments, transform them in structures and store them in stack A as a linked list.
 		//The first argument should be at the top of the stack
 		//so storing needs to start by last arg and then pile each arg above the latest
-	store_in_stack(argc, argv);
-
+	stack = store_in_stack(argc, argv);
+	printf("ft_stack_len=%d\n",ft_stack_len(&stack));
+	
 	//3) check if stack a is already sorted, return 0. could maybe also check that stack b is empty ?
-	// if stack_is_sorted()
-	// 	return (0);
+	if (stack_is_sorted(stack))
+		return (0);
 
 	//4) go to function which sorts stacks
 	return (0);

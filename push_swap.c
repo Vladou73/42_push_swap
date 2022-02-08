@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vladimir <vladimir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 11:52:03 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/07 17:54:13 by vladimir         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:49:42 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,76 +101,23 @@ int	stack_is_sorted()
 	return (0);
 }
 
-t_stack	*ft_create_elem(int n)
-{
-	t_stack	*elem;
-
-	elem = malloc(sizeof(t_list));
-	// elem = ft_calloc(1, sizeof(t_list));
-	if (!elem)
-		return (NULL);
-	elem->n = n;
-	elem->next = NULL;
-	return (elem);
-}
-
-void	ft_stack_add_front(t_stack **stack, t_stack *new)
-{
-	if (new)
-	{
-		new->next = *stack;
-		printf("stack->n=%d\n",(*stack)->n);
-		printf("new->next->n=%d\n",new->next->n);
-		*stack = new;
-		printf("stack->n=%d\n\n",(*stack)->n);
-	}
-}
-
-int	ft_stack_len(t_stack **stack)
-{
-	int		i;
-	t_stack	*tmp;
-
-	printf("coucou3\n");
-	if (!(*stack))
-		return (0);
-	tmp = *stack;
-	i = 1;
-	while ((*stack)->next)
-	{
-		tmp = tmp->next;
-		i++;
-		printf("n=%d\n", (tmp)->n);
-		printf("i=%d\n", i);
-	}
-	return (i);
-}
 
 void	store_in_stack(int argc, char **args)
 {
 	t_stack	*new;
-	t_stack **stack;
-	int		nbr;
-	printf("store in stack A\n");
+	t_stack *stack;
 
-	new = ft_create_elem(ft_atoi(args[argc - 1]));
-	stack = &new;
+	printf("store in stack A\n");
+	stack = ft_create_elem(ft_atoi(args[argc - 1]));
 	argc--;
-	printf("stack->n=%d\n",(*stack)->n);
-	printf("stack->n=%d\n",(*stack)->n);
+	
 	while(argc >= 2)
 	{
-		nbr = ft_atoi(args[argc - 1]);
-		printf("stack->n=%d\n",(*stack)->n);
-		new = ft_create_elem(nbr);
-		printf("stack->n=%d\n",(*stack)->n);
-		ft_stack_add_front(stack, new);
+		new = ft_create_elem(ft_atoi(args[argc - 1]));
+		ft_stack_add_front(&stack, new);
 		argc--;
 	}
-	printf("coucou2\n");
-	printf("%d\n",(*stack)->next->next->n);
-	// printf("%d\n",ft_stack_len(stack));
-
+	printf("ft_stack_len=%d\n",ft_stack_len(&stack));
 }
 
 int	main(int argc, char **argv)

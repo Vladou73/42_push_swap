@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:54:07 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/08 14:51:11 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/08 17:58:07 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,12 @@ int	ft_stack_len(t_stack **stack)
 		return (0);
 	tmp = *stack;
 	i = 1;
+	printf("%d\n", tmp->n);
 	while (tmp->next)
 	{
 		tmp = tmp->next;
 		i++;
+		printf("%d\n", tmp->n);
 	}
 	return (i);
 }

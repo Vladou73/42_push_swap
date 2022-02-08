@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 11:52:03 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/08 16:26:27 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/08 18:59:19 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,8 @@ t_stack	*store_in_stack(int argc, char **args)
 
 int	main(int argc, char **argv)
 {
- 	t_stack	*stack;
+ 	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	//0 CAUTION : for all functions used from libft, need to check these functions and make sure they have no pb
 
@@ -142,13 +143,18 @@ int	main(int argc, char **argv)
 		//atoi all arguments, transform them in structures and store them in stack A as a linked list.
 		//The first argument should be at the top of the stack
 		//so storing needs to start by last arg and then pile each arg above the latest
-	stack = store_in_stack(argc, argv);
-	printf("ft_stack_len=%d\n",ft_stack_len(&stack));
+	stack_a = store_in_stack(argc, argv);
 	
 	//3) check if stack a is already sorted, return 0. could maybe also check that stack b is empty ?
-	if (stack_is_sorted(stack))
+	if (stack_is_sorted(stack_a))
 		return (0);
 
-	//4) go to function which sorts stacks
+	//4) check operation functions are working
+	//ft_sa(&stack_a);
+	ft_pb(&stack_a, &stack_b);
+	
+	printf("ft_stack_a_len=%d\n\n",ft_stack_len(&stack_a));
+	printf("ft_stack_b_len=%d\n",ft_stack_len(&stack_b));
+	
 	return (0);
 }

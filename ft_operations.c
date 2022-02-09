@@ -6,7 +6,7 @@
 /*   By: vladimir <vladimir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:16:56 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/09 18:02:11 by vladimir         ###   ########.fr       */
+/*   Updated: 2022/02/09 18:10:25 by vladimir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_ra(t_stack **astack)
 {
 	t_stack *tmp;
 
-	if (!(*astack))
+	if (!(*astack) || !(*astack)->next)
 		return;
 	tmp = *astack;
 	*astack = (*astack)->next;
@@ -94,7 +94,7 @@ void	ft_rb(t_stack **astack)
 {
 	t_stack *tmp;
 
-	if (!(*astack))
+	if (!(*astack) || !(*astack)->next)
 		return;
 	tmp = *astack;
 	*astack = (*astack)->next;
@@ -116,7 +116,7 @@ void	ft_rra(t_stack **astack)
 	t_stack *tmp1;
 	t_stack *tmp2;
 
-	if (!(*astack))
+	if (!(*astack) || !(*astack)->next)
 		return;
 	tmp1 = *astack;
 	while (tmp1->next)
@@ -137,7 +137,7 @@ void	ft_rrb(t_stack **astack)
 	t_stack *tmp1;
 	t_stack *tmp2;
 
-	if (!(*astack))
+	if (!(*astack) || !(*astack)->next)
 		return;
 	tmp1 = *astack;
 	while (tmp1->next)

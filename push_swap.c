@@ -6,7 +6,7 @@
 /*   By: vladimir <vladimir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 11:52:03 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/09 18:03:25 by vladimir         ###   ########.fr       */
+/*   Updated: 2022/02/09 18:44:08 by vladimir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,19 +152,16 @@ int	main(int argc, char **argv)
 		return (0);
 
 	//4) check operation functions are working
-	//ft_sa(&stack_a);
 	ft_pb(&stack_a, &stack_b);
 	ft_pb(&stack_a, &stack_b);
 	ft_pb(&stack_a, &stack_b);
-	//ft_sb(&stack_b);
-
-	//ft_pa(&stack_a, &stack_b);
-	//ft_pa(&stack_a, &stack_b);
-	//ft_rr(&stack_a, &stack_b);
 	ft_rrr(&stack_a, &stack_b);
-
 	printf("ft_stack_a_len=%d\n\n",ft_stack_len(&stack_a));
 	printf("ft_stack_b_len=%d\n",ft_stack_len(&stack_b));
+
+	//5) decide which algo to chose : small algo, big algo
+	//if (ft_stack_len(&stack_a) <= 5)
+	//	sort_small_algo(&stack_a, &stack_b);
 
 	return (0);
 }

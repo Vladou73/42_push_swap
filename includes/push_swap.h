@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vladimir <vladimir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:17:43 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/08 18:57:39 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/09 18:02:58 by vladimir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ typedef struct s_stack
 //******************** LINKED LISTS ********************//
 t_stack	*ft_create_elem(int n);
 void	ft_stack_add_front(t_stack **stack, t_stack *new);
-int	ft_stack_len(t_stack **stack);
+int		ft_stack_len(t_stack **stack);
+void	ft_stack_add_back(t_stack **stack, t_stack *new);
 
 //******************** STACK OPERATIONS ********************//
 void	ft_sa(t_stack **astack);
@@ -35,7 +36,11 @@ void	ft_sb(t_stack **astack);
 void	ft_ss(t_stack **astack_a, t_stack **astack_b);
 void	ft_pb(t_stack **astack_a, t_stack **astack_b);
 void	ft_pa(t_stack **astack_a, t_stack **astack_b);
-
+void	ft_ra(t_stack **astack);
+void	ft_rb(t_stack **astack);
+void	ft_rr(t_stack **astack_a, t_stack **astack_b);
+void	ft_rra(t_stack **astack);
+void	ft_rrb(t_stack **astack);
+void	ft_rrr(t_stack **astack_a, t_stack **astack_b);
 
 #endif
-

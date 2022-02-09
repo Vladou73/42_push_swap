@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vladimir <vladimir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 11:52:03 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/08 18:59:19 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/09 18:03:25 by vladimir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	stack_is_sorted(t_stack *stack)
 {
 	t_stack	*tmp1;
 	t_stack	*tmp2;
-	
+
 	if (!stack || !(stack->next))
 		return (1);
 	tmp1 = stack;
@@ -119,7 +119,7 @@ t_stack	*store_in_stack(int argc, char **args)
 	printf("store in stack A\n");
 	stack = ft_create_elem(ft_atoi(args[argc - 1]));
 	argc--;
-	
+
 	while(argc >= 2)
 	{
 		new = ft_create_elem(ft_atoi(args[argc - 1]));
@@ -134,6 +134,8 @@ int	main(int argc, char **argv)
  	t_stack	*stack_a;
 	t_stack	*stack_b;
 
+	stack_a = NULL;
+	stack_b = NULL;
 	//0 CAUTION : for all functions used from libft, need to check these functions and make sure they have no pb
 
 	//1) check arguments function. if checks are not good, exit program
@@ -144,7 +146,7 @@ int	main(int argc, char **argv)
 		//The first argument should be at the top of the stack
 		//so storing needs to start by last arg and then pile each arg above the latest
 	stack_a = store_in_stack(argc, argv);
-	
+
 	//3) check if stack a is already sorted, return 0. could maybe also check that stack b is empty ?
 	if (stack_is_sorted(stack_a))
 		return (0);
@@ -152,9 +154,17 @@ int	main(int argc, char **argv)
 	//4) check operation functions are working
 	//ft_sa(&stack_a);
 	ft_pb(&stack_a, &stack_b);
-	
+	ft_pb(&stack_a, &stack_b);
+	ft_pb(&stack_a, &stack_b);
+	//ft_sb(&stack_b);
+
+	//ft_pa(&stack_a, &stack_b);
+	//ft_pa(&stack_a, &stack_b);
+	//ft_rr(&stack_a, &stack_b);
+	ft_rrr(&stack_a, &stack_b);
+
 	printf("ft_stack_a_len=%d\n\n",ft_stack_len(&stack_a));
 	printf("ft_stack_b_len=%d\n",ft_stack_len(&stack_b));
-	
+
 	return (0);
 }

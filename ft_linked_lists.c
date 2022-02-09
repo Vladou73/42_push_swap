@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_linked_lists.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vladimir <vladimir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:54:07 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/08 17:58:07 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/09 16:50:00 by vladimir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ t_stack	*ft_create_elem(int n)
 {
 	t_stack	*elem;
 
-	elem = malloc(sizeof(t_list));
-	// elem = ft_calloc(1, sizeof(t_list));
+	elem = ft_calloc(1, sizeof(t_list));
 	if (!elem)
 		return (NULL);
 	elem->n = n;
@@ -31,6 +30,24 @@ void	ft_stack_add_front(t_stack **stack, t_stack *new)
 	{
 		new->next = *stack;
 		*stack = new;
+	}
+}
+
+void	ft_stack_add_back(t_stack **stack, t_stack *new)
+{
+	t_stack *tmp;
+
+	if (new)
+	{
+		if (!(*stack))
+			stack = &new;
+		else
+		{
+			tmp = *stack;
+			while (tmp->next)
+				tmp = tmp->next;
+			tmp->next = new;
+		}
 	}
 }
 

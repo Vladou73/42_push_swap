@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 11:52:03 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/10 17:21:13 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/10 18:24:40 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,47 @@ void	ft_add_indexes(t_stack **astack)
 	}
 }
 
+void	ft_rotate_push_binaries(t_stack **astack_a, t_stack **astack_b, int i)
+{
+	int	initial_len;
+	
+	initial_len = ft_stack_len(astack_a);
+	while (initial_len)
+	{
+		if ((*astack_a)->index & (1 << i))
+			ft_ra(astack_a);
+		else
+			ft_pb(astack_a, astack_b);
+		initial_len--;
+	}
+}
+
 void	sort_big_algo(t_stack **astack_a, t_stack **astack_b)
 {	
 	printf("sort big algo\n");
 	//1) add indexes to structures
 	printf("add index to structures\n");
 	ft_add_indexes(astack_a);
-	astack_b = NULL;
+
+	//2) radix algorithm using bitwise operations
+	//b) find len of longest binary (between 1 and 32)
 	
-	//2) radix algorithm
+	//c) perform (box changing of numbers) x (len of longest binary) with bitwise operations using operations
+	printf("process radix sort\n");
+	
+	//for i = 0 ==> need to generalise with while loop
+	int	i;
+	i = 0;
+	ft_rotate_push_binaries(astack_a, astack_b, i);
+	
+	
 	ft_print_values_indexes(astack_a);
+	printf("\nstack_b\n\n");
+	ft_print_values_indexes(astack_b);
+	
+
+	//3) print operations
+	
 }
 
 void	sort_small_algo(t_stack **astack_a, t_stack **astack_b)

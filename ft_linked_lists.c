@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:54:07 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/10 12:51:04 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/10 16:23:39 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_stack	*ft_create_elem(int n)
 {
 	t_stack	*elem;
-
+	//ATTENTION je dois être sûr de set tous les trucs de mon elem à NULL ou 0
 	elem = ft_calloc(1, sizeof(t_list));
 	if (!elem)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:17:43 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/10 12:56:40 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:20:16 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_stack_len(t_stack **stack);
 void	ft_stack_add_back(t_stack **stack, t_stack *new);
 void	ft_print_values_indexes(t_stack **stack);
 
-//******************** STACK OPERATIONS ********************//
+//******************** STACK OPERATIONS *****************//
 void	ft_sa(t_stack **astack);
 void	ft_sb(t_stack **astack);
 void	ft_ss(t_stack **astack_a, t_stack **astack_b);
@@ -44,5 +44,12 @@ void	ft_rr(t_stack **astack_a, t_stack **astack_b);
 void	ft_rra(t_stack **astack);
 void	ft_rrb(t_stack **astack);
 void	ft_rrr(t_stack **astack_a, t_stack **astack_b);
+
+//******************** CHECK ARGUMENTS *****************//
+void	check_args(int argc, char **argv);
+int		args_have_error(int argc, char **args);
+int		args_have_duplicates(char **args);
+int		array_is_number(char *arr);
+t_stack	*store_in_stack(int argc, char **args);
 
 #endif

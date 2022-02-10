@@ -6,92 +6,12 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 11:52:03 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/10 12:59:59 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:21:13 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/push_swap.h"
 
-int	array_is_number(char *arr)
-{
-	int	j;
-
-	j = 0;
-	if (arr[j] == '-')
-		j++;
-	if (!arr[j])
-		return (0);
-	while (arr[j])
-	{
-		if (!ft_isdigit(arr[j]))
-			return (0);
-		j++;
-	}
-	return (1);
-}
-
-int	args_have_duplicates(char **args)
-{
-	int	i;
-	int	j;
-
-	i = 1;
-	while (args[i])
-	{
-		j = 2;
-		while (args[j] && j != i)
-		{
-			if (!ft_strncmp(args[i], args[j], 15))
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-int	args_have_error(int argc, char **args)
-{
-	int	i;
-	//1) check if all arguments are numbers. Check for '-' in first place of each argument
-	printf("check if numbers\n");
-	i = 1;
-	while (args[i])
-	{
-		if (!array_is_number(args[i]))
-			return (1);
-		i++;
-	}
-	//2) transform all args with atoi. Check that they are all in ints range
-	printf("check if integers\n");
-	i = 1;
-	while (args[i])
-	{
-		if (!ft_isint(ft_atoi_long(args[i])))
-			return (1);
-		i++;
-	}
-	//3) check if there are no duplicates
-	printf("check if duplicates\n");
-	if (argc >= 3 && args_have_duplicates(args))
-		return (1);
-	return (0);
-}
-
-void check_args(int argc, char **argv)
-{
-	//• If no parameters are specified, the program must not display anything and give the
-	//prompt back
-	if (argc == 1)
-		exit(1);
-
-	//• In case of error, you must display Error followed by a ’\n’ on the standard error.
-	if (args_have_error(argc, argv))
-	{
-		ft_putstr_fd("Error\n", 2);
-		exit(1);
-	}
-}
 
 int	stack_is_sorted(t_stack *stack)
 {
@@ -111,48 +31,38 @@ int	stack_is_sorted(t_stack *stack)
 	return (1);
 }
 
-t_stack	*store_in_stack(int argc, char **args)
-{
-	t_stack	*new;
-	t_stack *stack;
-
-	printf("store in stack A\n");
-	stack = ft_create_elem(ft_atoi(args[argc - 1]));
-	argc--;
-
-	while(argc >= 2)
-	{
-		new = ft_create_elem(ft_atoi(args[argc - 1]));
-		ft_stack_add_front(&stack, new);
-		argc--;
-	}
-	return (stack);
-}
-
-void	sort_big_algo(t_stack **astack_a, t_stack **astack_b)
+void	ft_add_indexes(t_stack **astack)
 {
 	int		index;
 	int		stack_len;
 	t_stack	*tmp_i;
 	t_stack	*tmp_j;
-	
-	printf("sort big algo\n");
-	//1) change the numbers to indexes
-	stack_len = ft_stack_len(astack_a);
-	tmp_i = *astack_a;
+
+	stack_len = ft_stack_len(astack);
+	tmp_i = *astack;
 	while (tmp_i)
 	{
-		tmp_j = *astack_a;
+		tmp_j = *astack;
 		index = 0;
 		while (tmp_j)
 		{
 			if (tmp_i->n < tmp_j->n)
 				index++;
+			tmp_j = tmp_j->next;
 		}
 		tmp_i->index = stack_len - index - 1;
 		tmp_i = tmp_i->next;
 	}
+}
+
+void	sort_big_algo(t_stack **astack_a, t_stack **astack_b)
+{	
+	printf("sort big algo\n");
+	//1) add indexes to structures
+	printf("add index to structures\n");
+	ft_add_indexes(astack_a);
 	astack_b = NULL;
+	
 	//2) radix algorithm
 	ft_print_values_indexes(astack_a);
 }
@@ -163,7 +73,6 @@ void	sort_small_algo(t_stack **astack_a, t_stack **astack_b)
 	astack_a = NULL;
 	astack_b = NULL;
 }
-
 
 int	main(int argc, char **argv)
 {

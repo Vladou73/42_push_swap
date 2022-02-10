@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vladimir <vladimir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 11:52:03 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/09 18:44:08 by vladimir         ###   ########.fr       */
+/*   Updated: 2022/02/10 12:59:59 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,42 @@ t_stack	*store_in_stack(int argc, char **args)
 	return (stack);
 }
 
+void	sort_big_algo(t_stack **astack_a, t_stack **astack_b)
+{
+	int		index;
+	int		stack_len;
+	t_stack	*tmp_i;
+	t_stack	*tmp_j;
+	
+	printf("sort big algo\n");
+	//1) change the numbers to indexes
+	stack_len = ft_stack_len(astack_a);
+	tmp_i = *astack_a;
+	while (tmp_i)
+	{
+		tmp_j = *astack_a;
+		index = 0;
+		while (tmp_j)
+		{
+			if (tmp_i->n < tmp_j->n)
+				index++;
+		}
+		tmp_i->index = stack_len - index - 1;
+		tmp_i = tmp_i->next;
+	}
+	astack_b = NULL;
+	//2) radix algorithm
+	ft_print_values_indexes(astack_a);
+}
+
+void	sort_small_algo(t_stack **astack_a, t_stack **astack_b)
+{
+	printf("sort small algo\n");
+	astack_a = NULL;
+	astack_b = NULL;
+}
+
+
 int	main(int argc, char **argv)
 {
  	t_stack	*stack_a;
@@ -152,16 +188,12 @@ int	main(int argc, char **argv)
 		return (0);
 
 	//4) check operation functions are working
-	ft_pb(&stack_a, &stack_b);
-	ft_pb(&stack_a, &stack_b);
-	ft_pb(&stack_a, &stack_b);
-	ft_rrr(&stack_a, &stack_b);
-	printf("ft_stack_a_len=%d\n\n",ft_stack_len(&stack_a));
-	printf("ft_stack_b_len=%d\n",ft_stack_len(&stack_b));
-
+	
 	//5) decide which algo to chose : small algo, big algo
-	//if (ft_stack_len(&stack_a) <= 5)
-	//	sort_small_algo(&stack_a, &stack_b);
+	if (ft_stack_len(&stack_a) <= 3)
+		sort_small_algo(&stack_a, &stack_b);
+	else
+		sort_big_algo(&stack_a, &stack_b);
 
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_linked_lists.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vladimir <vladimir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:54:07 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/09 16:50:00 by vladimir         ###   ########.fr       */
+/*   Updated: 2022/02/10 12:51:04 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,25 @@ int	ft_stack_len(t_stack **stack)
 		return (0);
 	tmp = *stack;
 	i = 1;
-	printf("%d\n", tmp->n);
 	while (tmp->next)
 	{
 		tmp = tmp->next;
 		i++;
-		printf("%d\n", tmp->n);
 	}
 	return (i);
+}
+
+void	ft_print_values_indexes(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (!(*stack))
+		return;
+	tmp = *stack;
+	printf("value=%d, index=%d\n",tmp->n, tmp->index);
+	while (tmp->next)
+	{
+		tmp = tmp->next;
+		printf("value=%d, index=%d\n",tmp->n, tmp->index);
+	}
 }

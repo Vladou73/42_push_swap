@@ -15,8 +15,7 @@
 t_stack	*ft_create_elem(int n)
 {
 	t_stack	*elem;
-	//ATTENTION je dois être sûr de set tous les trucs de mon elem à NULL ou 0
-	elem = ft_calloc(1, sizeof(t_list));
+	elem = ft_calloc(1, sizeof(t_stack));
 	if (!elem)
 		return (NULL);
 	elem->n = n;

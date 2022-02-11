@@ -38,6 +38,8 @@ void	ft_set_null_free_stack(t_stack **astack);
 void	ft_pb(t_stack **astack_a, t_stack **astack_b);
 void	ft_pa(t_stack **astack_a, t_stack **astack_b);
 void	ft_ra(t_stack **astack);
+void	ft_sa(t_stack **astack);
+void	ft_rra(t_stack **astack);
 
 //******************** CHECK ARGUMENTS *****************//
 void	check_args(int argc, char **argv);

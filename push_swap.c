@@ -32,6 +32,7 @@ int	stack_is_sorted(t_stack *stack)
 
 void	sort_small_algo()
 {
+	//t_stack **astack_a, t_stack **astack_b
 	//astack_a = NULL;
 	//astack_b = NULL;
 	return;
@@ -44,9 +45,10 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
-	//0 CAUTION : for all functions used from libft, need to check these functions and make sure they have no pb
 	check_args(argc, argv);
 	stack_a = store_in_stack(argc, argv);
+	if (!stack_a)
+		return (0);
 	if (stack_is_sorted(stack_a))
 	{
 		ft_set_null_free_stack(&stack_a);
@@ -56,10 +58,10 @@ int	main(int argc, char **argv)
 		sort_small_algo();
 	else
 		sort_big_algo(&stack_a, &stack_b);
-	
+
 	printf("\nstack_a\n");
 	ft_print_values_indexes(&stack_a);
-	
+
 	ft_set_null_free_stack(&stack_a);
 	return (0);
 }

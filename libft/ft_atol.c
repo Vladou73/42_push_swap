@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_long.c                                     :+:      :+:    :+:   */
+/*   ft_atol.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vladimir <vladimir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,7 +15,7 @@
 
 #include "libft.h"
 
-long	ft_atoi_long(const char *src)
+long	ft_atol(const char *src)
 {
 	long	dest;
 	int		sign;

@@ -64,7 +64,7 @@ int	args_have_error(int argc, char **args)
 	i = 1;
 	while (args[i])
 	{
-		if (!ft_isint(ft_atoi_long(args[i])))
+		if (!ft_isint(ft_atol(args[i])))
 			return (1);
 		i++;
 	}
@@ -94,10 +94,17 @@ t_stack	*store_in_stack(int argc, char **args)
 	t_stack *stack;
 
 	stack = ft_create_elem(ft_atoi(args[argc - 1]));
+	if (!stack)
+		return (NULL);
 	argc--;
 	while(argc >= 2)
 	{
 		new = ft_create_elem(ft_atoi(args[argc - 1]));
+		if (!new)
+		{
+			ft_set_null_free_stack(&stack);
+			return (NULL);
+		}
 		ft_stack_add_front(&stack, new);
 		argc--;
 	}

@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 11:52:03 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/11 12:26:46 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/11 12:32:31 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int count_bits(int n)
 		n >>= 1;
 	}
 	return count;
-}
+}         
 
 void	sort_big_algo(t_stack **astack_a, t_stack **astack_b)
 {	
@@ -114,9 +114,12 @@ void	sort_big_algo(t_stack **astack_a, t_stack **astack_b)
 	maximum_bits = count_bits(ft_stack_len(astack_a));
 	printf("maximum_bits=%d\n",maximum_bits);
 	i = 0;	
-	//while (i < maximum_bits)
-	ft_rotate_push_binaries(astack_a, astack_b, i);
-	ft_push_all_first_stack(astack_a, astack_b);
+	while (i < maximum_bits)
+	{
+		ft_rotate_push_binaries(astack_a, astack_b, i);
+		ft_push_all_first_stack(astack_a, astack_b);
+		i++;
+	}
 	
 	ft_print_values_indexes(astack_a);
 	printf("\nstack_b\n\n");

@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:13:35 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/10 17:19:39 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/11 14:10:31 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ int	args_have_duplicates(char **args)
 int	args_have_error(int argc, char **args)
 {
 	int	i;
-	//1) check if all arguments are numbers. Check for '-' in first place of each argument
-	printf("check if numbers\n");
+
 	i = 1;
 	while (args[i])
 	{
@@ -62,8 +61,6 @@ int	args_have_error(int argc, char **args)
 			return (1);
 		i++;
 	}
-	//2) transform all args with atoi. Check that they are all in ints range
-	printf("check if integers\n");
 	i = 1;
 	while (args[i])
 	{
@@ -71,8 +68,6 @@ int	args_have_error(int argc, char **args)
 			return (1);
 		i++;
 	}
-	//3) check if there are no duplicates
-	printf("check if duplicates\n");
 	if (argc >= 3 && args_have_duplicates(args))
 		return (1);
 	return (0);
@@ -98,10 +93,8 @@ t_stack	*store_in_stack(int argc, char **args)
 	t_stack	*new;
 	t_stack *stack;
 
-	printf("store in stack A\n");
 	stack = ft_create_elem(ft_atoi(args[argc - 1]));
 	argc--;
-
 	while(argc >= 2)
 	{
 		new = ft_create_elem(ft_atoi(args[argc - 1]));

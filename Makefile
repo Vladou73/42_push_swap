@@ -6,7 +6,7 @@
 #    By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/17 17:55:57 by vnafissi          #+#    #+#              #
-#    Updated: 2022/02/10 17:13:54 by vnafissi         ###   ########.fr        #
+#    Updated: 2022/02/11 14:13:44 by vnafissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ LIBFTNAME = libft.a
 INCS = -I ./includes -I ./libft
 
 NAME = push_swap
-SRCS = push_swap.c ft_linked_lists.c ft_operations.c ft_initialization.c
+SRCS = push_swap.c ft_linked_lists.c ft_operations.c ft_initialization.c ft_big_algo.c
 OBJS=$(SRCS:.c=.o)
 
 #*********** RULES ************

@@ -24,6 +24,7 @@ void	ft_sa(t_stack **astack)
 	(*astack)->next = tmp->next;
 	tmp->next = *astack;
 	*astack = tmp;
+	ft_putstr_fd("sa\n", 1);
 }
 
 //pa : push a - take the first element at the top of b and put it at the top of a. Do
@@ -88,4 +89,5 @@ void	ft_rra(t_stack **astack)
 	ft_stack_add_front(astack, tmp1);
 	tmp2->next = NULL;
 	*astack = tmp1;
+	ft_putstr_fd("rra\n", 1);
 }

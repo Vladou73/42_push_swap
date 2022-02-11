@@ -30,12 +30,41 @@ int	stack_is_sorted(t_stack *stack)
 	return (1);
 }
 
-void	sort_small_algo()
+void	sort_3_numbers(t_stack **astack_a)
 {
-	//t_stack **astack_a, t_stack **astack_b
-	//astack_a = NULL;
-	//astack_b = NULL;
+	//case for 3 numbers
+	t_stack	*tmp1;
+	t_stack	*tmp2;
+	t_stack	*tmp3;
+
+	tmp1 = *astack_a;
+	tmp2 = tmp1->next;
+	tmp3 = tmp2->next;
+
+	if (tmp1->n > tmp2->n && tmp1->n < tmp3->n) //case 1 0 2
+		ft_sa(astack_a);
+	else if (tmp1->n < tmp2->n && tmp1->n > tmp3->n) //case 1 2 0
+		ft_rra(astack_a);
+	else if (tmp1->n < tmp2->n && tmp1->n < tmp3->n) //case 0 2 1
+	{
+		ft_rra(astack_a);
+		ft_sa(astack_a);
+	}
+	else if (tmp1->n > tmp2->n && tmp2->n > tmp3->n) //case 2 1 0
+	{
+		ft_ra(astack_a);
+		ft_sa(astack_a);
+	}
+	else //case 2 0 1
+		ft_ra(astack_a);
 	return;
+}
+
+void	sort_small_algo(t_stack **astack_a, t_stack **astack_b)
+{
+	ft_pb(astack_a, astack_b);
+	ft_pb(astack_a, astack_b);
+	sort_3_numbers(astack_a);
 }
 
 int	main(int argc, char **argv)
@@ -54,8 +83,10 @@ int	main(int argc, char **argv)
 		ft_set_null_free_stack(&stack_a);
 		return (0);
 	}
-	if (ft_stack_len(&stack_a) <= 3)
-		sort_small_algo();
+	if (ft_stack_len(&stack_a) == 3)
+		sort_3_numbers(&stack_a);
+	else if (ft_stack_len(&stack_a) == 5)
+		sort_small_algo(&stack_a, &stack_b);
 	else
 		sort_big_algo(&stack_a, &stack_b);
 

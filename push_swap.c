@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 11:52:03 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/10 18:24:40 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/11 12:26:46 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,36 @@ void	ft_rotate_push_binaries(t_stack **astack_a, t_stack **astack_b, int i)
 	}
 }
 
+void	ft_push_all_first_stack(t_stack **astack_a, t_stack **astack_b)
+{
+	t_stack	*tmp;
+	
+	tmp = *astack_b;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		ft_pa(astack_a, astack_b);
+	}
+}
+
+int count_bits(int n)
+{
+	int count;
+	
+	count = 0;
+	while (n)
+	{
+		count++;
+		n >>= 1;
+	}
+	return count;
+}
+
 void	sort_big_algo(t_stack **astack_a, t_stack **astack_b)
 {	
+	int	maximum_bits;
+	int	i;
+
 	printf("sort big algo\n");
 	//1) add indexes to structures
 	printf("add index to structures\n");
@@ -83,11 +111,12 @@ void	sort_big_algo(t_stack **astack_a, t_stack **astack_b)
 	//c) perform (box changing of numbers) x (len of longest binary) with bitwise operations using operations
 	printf("process radix sort\n");
 	
-	//for i = 0 ==> need to generalise with while loop
-	int	i;
-	i = 0;
+	maximum_bits = count_bits(ft_stack_len(astack_a));
+	printf("maximum_bits=%d\n",maximum_bits);
+	i = 0;	
+	//while (i < maximum_bits)
 	ft_rotate_push_binaries(astack_a, astack_b, i);
-	
+	ft_push_all_first_stack(astack_a, astack_b);
 	
 	ft_print_values_indexes(astack_a);
 	printf("\nstack_b\n\n");

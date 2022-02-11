@@ -31,7 +31,8 @@ void	ft_stack_add_front(t_stack **stack, t_stack *new);
 int		ft_stack_len(t_stack **stack);
 void	ft_stack_add_back(t_stack **stack, t_stack *new);
 void	ft_print_values_indexes(t_stack **stack);
-void	ft_free_linked_list(t_stack **astack);
+void	ft_set_null_free_elem(t_stack *elem);
+void	ft_set_null_free_stack(t_stack **astack);
 
 //******************** STACK OPERATIONS *****************//
 void	ft_pb(t_stack **astack_a, t_stack **astack_b);

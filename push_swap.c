@@ -30,10 +30,11 @@ int	stack_is_sorted(t_stack *stack)
 	return (1);
 }
 
-void	sort_small_algo(t_stack **astack_a, t_stack **astack_b)
+void	sort_small_algo()
 {
-	astack_a = NULL;
-	astack_b = NULL;
+	//astack_a = NULL;
+	//astack_b = NULL;
+	return;
 }
 
 int	main(int argc, char **argv)
@@ -48,17 +49,17 @@ int	main(int argc, char **argv)
 	stack_a = store_in_stack(argc, argv);
 	if (stack_is_sorted(stack_a))
 	{
-		ft_free_linked_list(&stack_a);
+		ft_set_null_free_stack(&stack_a);
 		return (0);
 	}
 	if (ft_stack_len(&stack_a) <= 3)
-		sort_small_algo(&stack_a, &stack_b);
+		sort_small_algo();
 	else
 		sort_big_algo(&stack_a, &stack_b);
 	
 	printf("\nstack_a\n");
 	ft_print_values_indexes(&stack_a);
 	
-	ft_free_linked_list(&stack_a);
+	ft_set_null_free_stack(&stack_a);
 	return (0);
 }

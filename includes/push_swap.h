@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:17:43 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/14 14:35:16 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:56:34 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,17 @@ int		array_is_number(char *arr);
 t_stack	*store_in_stack(int argc, char **args);
 
 //******************** ALGORITHM ********************//
+int		stack_is_sorted(t_stack *stack);
 void	ft_rotate_push_binaries(t_stack **astack_a, t_stack **astack_b, int i);
 void	ft_push_all_first_stack(t_stack **astack_a, t_stack **astack_b);
 int		count_bits(int n);
 void	ft_add_indexes(t_stack **astack);
 void	sort_big_algo(t_stack **astack_a, t_stack **astack_b);
+void	ft_rules_3_numbers(
+			t_stack **astack_a, t_stack *tmp1, t_stack *tmp2, t_stack *tmp3);
+void	sort_3_numbers(t_stack **astack_a);
+t_stack	*find_min_in_stack(t_stack **astack_a);
+int		find_elem_index_in_stack(t_stack **astack, t_stack *elem);
+void	sort_small_algo(t_stack **astack_a, t_stack **astack_b);
 
 #endif

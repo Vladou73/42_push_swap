@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_linked_lists2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 14:35:31 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/14 14:36:00 by vnafissi         ###   ########.fr       */
+/*   Created: 2022/02/14 14:23:04 by vnafissi          #+#    #+#             */
+/*   Updated: 2022/02/14 14:23:42 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/push_swap.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_set_null_free_stack(t_stack **astack)
 {
-	size_t	i;
+	t_stack	*tmp;
 
-	if (!s)
-		return (0);
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (!(*astack))
+		return ;
+	while (*astack)
+	{
+		tmp = (*astack)->next;
+		ft_set_null_free_elem(*astack);
+		*astack = tmp;
+	}
 }

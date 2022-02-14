@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:17:43 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/14 12:06:46 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:35:16 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-
 //******************** LINKED LISTS ********************//
 t_stack	*ft_create_elem(int n);
 void	ft_stack_add_front(t_stack **stack, t_stack *new);
 int		ft_stack_len(t_stack **stack);
 void	ft_stack_add_back(t_stack **stack, t_stack *new);
-void	ft_print_values_indexes(t_stack **stack);
 void	ft_set_null_free_elem(t_stack *elem);
 void	ft_set_null_free_stack(t_stack **astack);
 

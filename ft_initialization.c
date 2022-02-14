@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:13:35 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/11 14:10:31 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:20:27 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,31 +73,27 @@ int	args_have_error(int argc, char **args)
 	return (0);
 }
 
-void check_args(int argc, char **argv)
+void	check_args(int argc, char **argv)
 {
-	//• If no parameters are specified, the program must not display anything and give the
-	//prompt back
 	if (argc == 1)
-		exit(1);
-
-	//• In case of error, you must display Error followed by a ’\n’ on the standard error.
+		exit (1);
 	if (args_have_error(argc, argv))
 	{
 		ft_putstr_fd("Error\n", 2);
-		exit(1);
+		exit (1);
 	}
 }
 
 t_stack	*store_in_stack(int argc, char **args)
 {
 	t_stack	*new;
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = ft_create_elem(ft_atoi(args[argc - 1]));
 	if (!stack)
 		return (NULL);
 	argc--;
-	while(argc >= 2)
+	while (argc >= 2)
 	{
 		new = ft_create_elem(ft_atoi(args[argc - 1]));
 		if (!new)

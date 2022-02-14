@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:11:21 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/11 14:46:25 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:19:16 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_rotate_push_binaries(t_stack **astack_a, t_stack **astack_b, int i)
 {
 	int	initial_len;
-	
+
 	initial_len = ft_stack_len(astack_a);
 	while (initial_len)
 	{
@@ -30,7 +30,7 @@ void	ft_rotate_push_binaries(t_stack **astack_a, t_stack **astack_b, int i)
 void	ft_push_all_first_stack(t_stack **astack_a, t_stack **astack_b)
 {
 	t_stack	*tmp;
-	
+
 	tmp = *astack_b;
 	while (tmp)
 	{
@@ -39,18 +39,18 @@ void	ft_push_all_first_stack(t_stack **astack_a, t_stack **astack_b)
 	}
 }
 
-int count_bits(int n)
+int	count_bits(int n)
 {
-	int count;
-	
+	int	count;
+
 	count = 0;
 	while (n)
 	{
 		count++;
 		n >>= 1;
 	}
-	return count;
-}         
+	return (count);
+}
 
 void	ft_add_indexes(t_stack **astack)
 {
@@ -83,7 +83,7 @@ void	sort_big_algo(t_stack **astack_a, t_stack **astack_b)
 
 	ft_add_indexes(astack_a);
 	maximum_bits = count_bits(ft_stack_len(astack_a));
-	i = 0;	
+	i = 0;
 	while (i < maximum_bits)
 	{
 		ft_rotate_push_binaries(astack_a, astack_b, i);

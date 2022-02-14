@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:54:07 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/11 15:24:33 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:23:22 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_stack	*ft_create_elem(int n)
 {
 	t_stack	*elem;
+
 	elem = ft_calloc(1, sizeof(t_stack));
 	if (!elem)
 		return (NULL);
@@ -34,7 +35,7 @@ void	ft_stack_add_front(t_stack **stack, t_stack *new)
 
 void	ft_stack_add_back(t_stack **stack, t_stack *new)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (new)
 	{
@@ -75,33 +76,4 @@ void	ft_set_null_free_elem(t_stack *elem)
 	elem->index = 0;
 	elem->next = NULL;
 	free(elem);
-}
-
-void	ft_set_null_free_stack(t_stack **astack)
-{
-	t_stack	*tmp;
-
-	if (!(*astack))
-		return ;
-	while (*astack)
-	{
-		tmp = (*astack)->next;
-		ft_set_null_free_elem(*astack);
-		*astack = tmp;
-	}
-}
-
-void	ft_print_values_indexes(t_stack **stack)
-{
-	t_stack	*tmp;
-
-	if (!(*stack))
-		return;
-	tmp = *stack;
-	printf("value=%d, index=%d\n",tmp->n, tmp->index);
-	while (tmp->next)
-	{
-		tmp = tmp->next;
-		printf("value=%d, index=%d\n",tmp->n, tmp->index);
-	}
 }

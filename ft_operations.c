@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:16:56 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/11 14:05:12 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/14 12:06:04 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,19 @@
 //sa : swap a - swap the first 2 elements at the top of stack a. Do nothing if there
 //is only one or no elements).
 void	ft_sa(t_stack **astack)
+{
+	t_stack	*tmp;
+
+	if (!*astack || !(*astack)->next)
+		return;
+	tmp = (*astack)->next;
+	(*astack)->next = tmp->next;
+	tmp->next = *astack;
+	*astack = tmp;
+	ft_putstr_fd("sa\n", 1);
+}
+
+void	ft_sb(t_stack **astack)
 {
 	t_stack	*tmp;
 

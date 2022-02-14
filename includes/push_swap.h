@@ -6,7 +6,7 @@
 /*   By: vnafissi <vnafissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 12:17:43 by vnafissi          #+#    #+#             */
-/*   Updated: 2022/02/11 14:43:40 by vnafissi         ###   ########.fr       */
+/*   Updated: 2022/02/14 12:06:46 by vnafissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_pb(t_stack **astack_a, t_stack **astack_b);
 void	ft_pa(t_stack **astack_a, t_stack **astack_b);
 void	ft_ra(t_stack **astack);
 void	ft_sa(t_stack **astack);
+void	ft_sb(t_stack **astack);
 void	ft_rra(t_stack **astack);
 
 //******************** CHECK ARGUMENTS *****************//
